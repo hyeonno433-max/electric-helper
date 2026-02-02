@@ -37,7 +37,7 @@ export default function TrackingPage() {
         try {
             // 전체 데이터를 가져와서 필터링 (프로토타입 단계)
             // 실제 운영 시에는 백엔드에 쿼리 파라미터로 전달해야 함 (?contact=...)
-            const res = await fetch("http://localhost:8000/diagnosis");
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis`);
             if (res.ok) {
                 const data = await res.json();
                 const filtered = data.filter((d: any) => d.contact === searchContact);
@@ -90,7 +90,7 @@ export default function TrackingPage() {
         if (!confirmed) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/diagnosis/${id}/status`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis/${id}/status`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ status }),

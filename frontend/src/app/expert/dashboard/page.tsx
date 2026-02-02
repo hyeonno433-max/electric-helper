@@ -47,7 +47,7 @@ export default function ExpertDashboard() {
 
     const fetchDiagnoses = async () => {
         try {
-            const res = await fetch("http://localhost:8000/diagnosis");
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis`);
             if (res.ok) {
                 const data = await res.json();
                 setDiagnoses(data.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
@@ -62,7 +62,7 @@ export default function ExpertDashboard() {
         if (!selectedId) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/diagnosis/${selectedId}/response`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis/${selectedId}/response`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

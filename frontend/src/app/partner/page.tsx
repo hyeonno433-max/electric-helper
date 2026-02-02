@@ -14,7 +14,7 @@ export default function PartnerPage() {
     const [expertNote, setExpertNote] = useState("");
 
     const fetchReservations = () => {
-        fetch("http://localhost:8000/reservations")
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/reservations`)
             .then(res => res.json())
             .then(data => {
                 setReservations(data);
@@ -40,7 +40,7 @@ export default function PartnerPage() {
         if (!selectedReservation) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/reservations/${selectedReservation.id}/confirm`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reservations/${selectedReservation.id}/confirm`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

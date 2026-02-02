@@ -9,7 +9,7 @@ function ExpertsContent() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:8000/experts")
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/experts`)
             .then((res) => res.json())
             .then((data) => {
                 setExperts(data);

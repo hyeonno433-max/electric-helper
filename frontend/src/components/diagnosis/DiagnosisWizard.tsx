@@ -27,7 +27,7 @@ const DiagnosisWizard: React.FC = () => {
 
         try {
             // 실제 API 호출
-            const response = await fetch("http://localhost:8000/diagnosis", {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

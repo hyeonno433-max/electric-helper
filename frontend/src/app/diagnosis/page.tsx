@@ -41,7 +41,7 @@ export default function DiagnosisPage() {
                 formData.append("files", file);
             });
 
-            const response = await fetch("http://localhost:8000/diagnosis", {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis`, {
                 method: "POST",
                 // Content-Type 헤더는 FormData 전송 시 자동으로 설정되므로 생략해야 함
                 body: formData,
