@@ -9,15 +9,25 @@ services:
       - key: NODE_VERSION
         value: 20
       - key: DB_HOST
-        sync: false
+        fromDatabase:
+          name: electric-helper-db
+          property: host
       - key: DB_PORT
-        sync: false
+        fromDatabase:
+          name: electric-helper-db
+          property: port
       - key: DB_USERNAME
-        sync: false
+        fromDatabase:
+          name: electric-helper-db
+          property: user
       - key: DB_PASSWORD
-        sync: false
+        fromDatabase:
+          name: electric-helper-db
+          property: password
       - key: DB_DATABASE
-        sync: false
+        fromDatabase:
+          name: electric-helper-db
+          property: database
 
 databases:
   - name: electric-helper-db
