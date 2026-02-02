@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: electric-helper-backend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_DATABASE
+        sync: false
+
+databases:
+  - name: electric-helper-db
+    databaseName: electric_helper
+    user: electric_user
+    plan: free # Render Free Tier PostgreSQL
