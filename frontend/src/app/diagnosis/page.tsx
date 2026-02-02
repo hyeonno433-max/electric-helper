@@ -65,7 +65,7 @@ export default function DiagnosisPage() {
             console.error(error);
             openAlert({
                 title: "네트워크 오류",
-                message: "서버 연결에 실패했습니다.",
+                message: `서버 연결에 실패했습니다.\nURL: ${process.env.NEXT_PUBLIC_API_URL}\nError: ${(error as Error).message}`,
                 type: "error"
             });
         } finally {
