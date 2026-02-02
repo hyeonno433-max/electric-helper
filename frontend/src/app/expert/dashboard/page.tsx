@@ -277,12 +277,15 @@ export default function ExpertDashboard() {
                                                 <ImageIcon size={16} className="text-indigo-500" /> 현장 사진
                                             </h3>
                                             <div className="grid grid-cols-3 gap-3">
-                                                {selectedDiagnosis.imageUrl.map((url, idx) => (
-                                                    <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="block aspect-square rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500 hover:ring-2 ring-indigo-500/20 transition-all group">
-                                                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                                                        <img src={url} alt={`현장사진-${idx}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                                                    </a>
-                                                ))}
+                                                {selectedDiagnosis.imageUrl.map((url, idx) => {
+                                                    const fixedUrl = url.replace("http://localhost:8000", process.env.NEXT_PUBLIC_API_URL || "");
+                                                    return (
+                                                        <a key={idx} href={fixedUrl} target="_blank" rel="noopener noreferrer" className="block aspect-square rounded-xl overflow-hidden border border-slate-800 hover:border-indigo-500 hover:ring-2 ring-indigo-500/20 transition-all group">
+                                                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                                                            <img src={fixedUrl} alt={`현장사진-${idx}`} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                                        </a>
+                                                    );
+                                                })}
                                             </div>
                                         </section>
                                     )}
